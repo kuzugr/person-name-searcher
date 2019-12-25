@@ -1,8 +1,8 @@
 require 'sinatra'
 require 'natto'
 
-get '/persons' do
-  return 'Paramete Text is required' unless params['text']
+post '/persons' do
+  return { text: 'Paramete Text is required' }.to_json unless params['text']
 
   natto = Natto::MeCab.new
 
@@ -25,5 +25,5 @@ get '/persons' do
     end
   end
 
-  person_names.to_json
+  { persons: person_names }.to_json
 end
