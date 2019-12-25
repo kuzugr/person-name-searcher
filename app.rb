@@ -17,7 +17,7 @@ post '/persons' do
 
     if person_names == []
       person_names[person_names_index] = n.surface
-    elsif features[features_index - 1].include?('人名')
+    elsif features[features_index - 2].include?('人名')
       person_names[person_names_index] += n.surface
     else
       person_names_index += 1
