@@ -1,6 +1,5 @@
 require 'sinatra'
 require 'natto'
-require 'pry'
 
 get '/persons' do
   return 'Paramete Text is required' unless params['text']
