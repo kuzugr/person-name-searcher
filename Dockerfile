@@ -4,12 +4,12 @@ ENV LANG=C.UTF-8
 
 ADD . /app/
 
-RUN cd mecab-0.996 && ./configure && make && make check && make install && ldconfig && cd -
-RUN cd mecab-ipadic-2.7.0-20070801 && ./configure && make && make install
+RUN cd mecab-0.996 && ./configure --with-charset=utf8 && make && make check && make install && ldconfig && cd -
+RUN cd mecab-ipadic-2.7.0-20070801 && ./configure --with-charset=utf && make && make install
 
 RUN CONFIGURE_OPTS="--disable-install-rdoc" rbenv install 2.5.1
 
 RUN gem install bundler -v '1.17.3'
-RUN bundle install --path vendor/bundle
+RUN bundle install --path vendor/bundle --without development
 
 CMD bundle exec ruby app.rb -p 8080
