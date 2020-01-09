@@ -1,6 +1,7 @@
 FROM ruby:2.7
 
 ENV LANG=C.UTF-8
+ENV PORT=8080
 
 RUN apt-get update \
   && apt-get install curl git \
@@ -32,4 +33,4 @@ RUN gem install bundler
 RUN bundle config set path vendor/bundle && bundle config set without development && bundle install
 
 EXPOSE 8080
-CMD bundle exec ruby app.rb -p 8080 -o 0.0.0.0
+CMD bundle exec ruby app.rb -p $PORT -o 0.0.0.0
