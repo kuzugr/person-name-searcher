@@ -30,6 +30,7 @@ RUN ./bin/install-mecab-ipadic-neologd -n -y
 ADD . /app/
 WORKDIR /app
 RUN gem install bundler
+RUN bundle update ffi
 RUN bundle config set path vendor/bundle && bundle config set without development && bundle install
 
 EXPOSE 8080
