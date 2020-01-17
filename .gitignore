@@ -1,3 +1,2 @@
 # Ignore bundler config.
-/vendor/bundle
-/.bundle
+__pycache__
