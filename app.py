@@ -27,4 +27,16 @@ def hello(text: hug.types.text):
                 person_names_index += 1
                 person_names.append(token.orth_)
 
-    return { 'persons': person_names }
+    uniq_person_names = list(set(person_names))
+    #  NOTE: ユニークにした後さらに苗字のみなどの重複を省く
+    #  例： ["田中太郎", "田中"]があった場合、"田中"は削除する
+    delete_names = []
+    for person_name in uniq_person_names:
+        for target_name in list(set(uniq_person_names) - set([person_name])):
+            if person_name in target_name:
+                delete_names.append(person_name)
+                break
+
+    not_duplicate_person_names = list(set(uniq_person_names) - set(delete_names))
+
+    return { 'persons': not_duplicate_person_names }
