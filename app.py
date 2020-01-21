@@ -27,4 +27,4 @@ def hello(text: hug.types.text):
                 person_names_index += 1
                 person_names.append(token.orth_)
 
-    return person_names
+    return { 'persons': person_names }
