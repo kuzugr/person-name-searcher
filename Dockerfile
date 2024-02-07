@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3.12
 
 ENV LANG=C.UTF-8
 ENV PORT=8080
